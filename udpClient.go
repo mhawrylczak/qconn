@@ -1,7 +1,7 @@
 package main
  
 import (
-    "fmt"
+    /*"fmt"*/
     "net"
 )
 
@@ -29,6 +29,7 @@ func Send(Addr string, data []byte) error {
 	return err
 }
  
+ /*
 func main() {
 
 	err := Send("127.0.0.1:10001",[]byte(`{"msg":"hello"}`))
@@ -36,3 +37,5 @@ func main() {
 		fmt.Println(err)
 	}
 }
+*/
+

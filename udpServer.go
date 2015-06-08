@@ -23,7 +23,7 @@ func toJsonMap(jsonBytes []byte) map[string]string {
 	return data
 }
 
-func Listen(port string){
+func Listen(port string, messages chan []byte){
 	/* Lets prepare a address at any address at port 10001*/
     	ServerAddr,err := net.ResolveUDPAddr("udp",":10001")
     	CheckError(err)
@@ -40,17 +40,12 @@ func Listen(port string){
         	if err != nil {
             		fmt.Println("Error: ",err)
         	}
-        	// string to map
-        	var jsonMap = toJsonMap(buf[0:n])
-        	// end
-        	fmt.Println("Json is: ", jsonMap)
-        	if err != nil {
-            		fmt.Println("Error: ",err)
-        	}   
+			messages <- buf[0:n]  
     	}
 }
- 
+/* 
 func main() {
 	port := ":10001"
 	Listen(port)
 }
+*/
